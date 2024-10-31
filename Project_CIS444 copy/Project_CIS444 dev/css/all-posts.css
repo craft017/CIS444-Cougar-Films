@@ -1,0 +1,43 @@
+html, body {
+    margin: 0;
+    height: 100%;
+    display: flex;
+    flex-direction: column; /* Stack the navbar and under-nav-div vertically */
+    position: sticky;
+}
+
+#under-nav {
+    display: flex;
+    flex: 1;  
+    /* Take up the remaining space below the fixed navbar 
+    which allows for the left and right divs to take up their 
+    respective space by using flex: 1, 2, 3, or higher etc...*/
+    /* position: sticky; */
+    flex-direction: column; 
+    position: sticky;
+    border: solid 10px rgb(232, 0, 0);
+    margin-right: 400px;
+    margin-left: 400px;
+}
+
+#upper {
+    display: flex;
+    flex: 0.5;
+    border: solid 10px rgb(0, 0, 0);
+    align-items: center;
+    justify-content: center;
+}
+
+#lower {
+    display: flex;
+    flex: 3;
+    border: solid 10px rgb(0, 170, 255);
+}
+
+#delete {
+    margin-left: 200px;
+}
+
+#heading {
+    margin-left: 300px;
+}

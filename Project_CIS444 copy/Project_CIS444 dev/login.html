@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/login.css">
+    <link rel="stylesheet" href="css/global.css">
+    <!-- How we would include a css file if we had our html files inside an html folder: -->
+    <!-- <link rel="stylesheet" href="../css/login.css">
+    <link rel="stylesheet" href="../css/global.css"> -->
+    
+    <title>Login Page</title>
+</head>
+<body>
+    <div id="container-login">
+        <div id="image-side">
+            <img id="cougar-director" src="images/CougarDirector.jpg" alt="Login Image">
+        </div>
+        <div id="login-side">
+                <h1 id="app-name">COUGAR <br> FILMS</h1>
+            <div id="login-box"> <!-- New div to contain all text and inputs -->
+                <h1 >Login Page</h1>
+                <label for="login-username">Username:</label>
+                <input type="text" id="login-username" name="username" required>
+                <label for="login-password">Password:</label>
+                <input type="password" id="login-password" name="password" required>
+                <button class="inner-btns" onclick="onClickLogin()">Login</button>
+                <p>Need an account? <a href="signup.html">Sign-up</a></p>
+            </div>
+        </div>
+    </div>
+    <script src="js/login.js"></script>
+</body>
+</html>

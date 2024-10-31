@@ -1,0 +1,31 @@
+html, body {
+    margin: 0;
+    height: 100%;
+    display: flex;
+    flex-direction: column; /* Stack the navbar and under-nav-div vertically */
+}
+
+/* Regular/Default Attribute CSS Stylings - Ex) attr {...styling...} */
+
+
+/* Class Attribute CSS Stylings - Ex) .class-attr {...styling...} */
+
+
+/* ID Attribute CSS Stylings - Ex) #id-attr {...styling...} */
+#under-nav-div {
+    display: flex;
+    flex: 1; /* Take up the remaining space below the fixed navbar */
+    flex-direction: row;
+}
+
+#left-panel-div {
+    flex: 1; /* smaller panel */
+    border: solid 2px black;
+    background-color: #f0f0f0;
+}
+
+#main-content-div {
+    flex: 3; /* Main content area */
+    border: solid 2px black;
+    background-color: #ffffff;
+}
