@@ -1,0 +1,159 @@
+html, body {
+    margin: 0;
+    height: 100%;
+    display: flex;
+    flex-direction: column; /* Stack the navbar and under-nav-div vertically */
+    position: sticky;
+}
+
+
+/* CSS for the Big Main div underneath the nav-div.
+(The one that contains the left-panel-div & right-panel-div)*/
+
+#under-nav-div {
+    display: flex;
+    flex: 1;  
+    /* Take up the remaining space below the fixed navbar 
+    which allows for the left and right divs to take up their 
+    respective space by using flex: 1, 2, 3, or higher etc...*/
+    /* position: sticky; */
+    flex-direction: row;
+    box-sizing: border-box;
+    position: sticky;
+}
+
+
+
+/* Start of CSS for the Left Panel */
+
+#left-panel-div {
+    display: flex;
+    flex-direction: column; /* Stack children vertically */
+    flex: 3; /* bigger number, bigger panel */
+    padding: 20px;
+}
+
+#movie-info-div {
+    display: flex;
+    flex: 1; /* Take up 1 part of the total space */
+    border: 5px solid rgb(196, 196, 196); 
+    margin-bottom: 15px;
+}
+
+#movie-details {
+    display: flex;
+    /* flex-direction: column; */
+    flex: 3;
+    border: solid 3px rgb(255, 0, 0);
+    flex-direction: column;
+}
+
+#image-div {
+    flex: 1;
+    display: flex;
+    border: solid 3px rgb(0, 132, 255);
+    justify-content: center; /* Center the image horizontally */
+    align-items: center;
+}
+
+#poster-img {
+    width: 90%; 
+    height: 90%; 
+    object-fit: contain; /* Prevent the image from being stretched or distorted */
+}
+
+#title-div {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+#description-div {
+    display: flex;
+    flex-direction: column;
+    border: 2px solid rgb(196, 196, 196); 
+    max-width: 600px;
+    max-height: 200px;
+
+}
+
+#description-text {
+    overflow-y: auto;
+    max-height: 100px;
+}
+
+
+#rating-div {
+    display: flex;
+    flex-direction: row;
+}
+
+#title-div p,
+#rating-div p {
+    margin: 0; /* Remove default margin */
+    text-align: center; /* Center-align text in the paragraph */
+    padding-left: 10px; /* Optional: add some space between heading and paragraph */
+}
+
+#blog-holder-div {
+    flex: 2; /* Take up 2 parts of the total space */
+    border: 5px solid rgb(196, 196, 196); 
+    /* background-color: #e0e0e0; */
+    overflow-y: auto; /* Make this div scrollable */
+}
+
+
+
+/* Start of CSS for the Right Panel */
+
+#right-panel-div {
+    display: flex;
+    flex: 1.2;
+    border-left: 4px solid rgb(196, 196, 196); ;
+    /* text-align: center; */
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#post-creation-div {
+    border: 2.5px solid rgb(196, 196, 196);
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.right-div-label {
+    font-family: 'Inter';
+    margin-bottom: 10px;
+    margin-top: 50px;
+    font-size: 1.5em;
+    font-weight: bold;
+}
+
+#post-heading {
+    width: 400px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    font-size: 1em;
+    max-width: 90%;
+}
+
+#post-text {
+    height: 300px;
+    width: 400px;
+    max-width: 90%;
+    font-size: 1em;
+    resize: none;
+    font-family: 'Inter';
+}
+
+#create-btn {
+    margin-bottom: 50px;
+    margin-top: 50px;
+}
+
+
+
+

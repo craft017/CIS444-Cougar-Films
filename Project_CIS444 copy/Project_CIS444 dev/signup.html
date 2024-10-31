@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/signup.css">
+    <link rel="stylesheet" href="css/global.css">
+    
+    <title>Sign-up Page</title>
+</head>
+<body>
+    <div id="container-signup">
+        <div id="image-side">
+            <img src="images/CougarDirector.jpg" alt="Login Image">
+        </div>
+        <div id="signup-side">
+            <div id="signup-box"> <!-- New div to contain all text and inputs -->
+                <h1>Sign-up Page</h1>
+                <label for="signup-username">Username:</label>
+                <input type="text" id="signup-username" name="username" required>
+                <label for="signup-password">Password:</label>
+                <input type="password" id="signup-password" name="password" required>
+                <label for="confirm-password">Confirm Password:</label>
+                <input type="text" id="confirm-password" name="confirmPassword" required>
+                <button class= "inner-btns" id="signup-button" onclick="onClickSignup()">Sign-up</button>
+                <p>Already have an account? <a href="login.html">Login</a></p>
+            </div>
+        </div>
+    </div>
+   
+<!-- Input a JS Script whn ready!! -->
+ <script src="js/signup.js"></script>
+
+</body>
+</html>
