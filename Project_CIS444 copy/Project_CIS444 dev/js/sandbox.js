@@ -1,2 +1,0 @@
-/* Can use this js file to mess around with JavaScript code
-for the sandbox.html file */

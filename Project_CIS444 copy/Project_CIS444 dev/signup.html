@@ -11,25 +11,29 @@
 <body>
     <div id="container-signup">
         <div id="image-side">
-            <img src="images/CougarDirector.jpg" alt="Login Image">
+            <img src="images/CougarDirector.jpg" alt="Signup Image">
         </div>
         <div id="signup-side">
-            <div id="signup-box"> <!-- New div to contain all text and inputs -->
+            <div id="signup-box">
                 <h1>Sign-up Page</h1>
-                <label for="signup-username">Username:</label>
-                <input type="text" id="signup-username" name="username" required>
-                <label for="signup-password">Password:</label>
-                <input type="password" id="signup-password" name="password" required>
-                <label for="confirm-password">Confirm Password:</label>
-                <input type="text" id="confirm-password" name="confirmPassword" required>
-                <button class= "inner-btns" id="signup-button" onclick="onClickSignup()">Sign-up</button>
+                <form method="POST" action="php/signup.php">
+                    <label for="signup-username">Username:</label>
+                    <input type="text" id="signup-username" name="username" required>
+                    
+                    <label for="signup-password">Password:</label>
+                    <input type="password" id="signup-password" name="password" required>
+                    
+                    <label for="confirm-password">Confirm Password:</label>
+                    <input type="password" id="confirm-password" name="confirmPassword" required>
+                    
+                    <button class="inner-btns" id="signup-button" type="submit">Sign-up</button>
+                </form>
                 <p>Already have an account? <a href="login.html">Login</a></p>
             </div>
         </div>
     </div>
    
-<!-- Input a JS Script whn ready!! -->
- <script src="js/signup.js"></script>
-
+    <!-- JS Script for form validation -->
+    <script src="js/signup.js"></script>
 </body>
 </html>

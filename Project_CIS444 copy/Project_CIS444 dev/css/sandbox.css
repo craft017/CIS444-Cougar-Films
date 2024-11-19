@@ -1,7 +1,0 @@
-html, body {
-    margin: 0;
-    height: 100%;
-    display: flex;
-    /* flex-direction: */ /* Can choose column or row for flex-direction: */
-    position: sticky;
-}
