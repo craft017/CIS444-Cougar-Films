@@ -13,7 +13,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         exit;
     }
 
-    // Hash the password for security
+    // Hash password
     $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
 
     // Prepare SQL statement to check if the username already exists

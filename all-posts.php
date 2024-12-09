@@ -10,7 +10,6 @@
     <link rel="stylesheet" href="css/all-posts.css">
     <title>Posts Page</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
-
 </head>
 <body>
     <div class="Navbar" id="Navbar">
@@ -25,37 +24,77 @@
             <!-- Left-Panel -->
         </div>
         <div class="main-content-div" id="main-content-div">
-            Main-Content
             <div id="upper">
-                    <h1 id="heading">All Posts</h1>
-                    <button class="inner-btns" id="delete">Delete</button>
+                <h1 id="heading">All Posts</h1>
+                <button class="inner-btns" id="delete">Delete</button>
             </div>
             <div id="posts-list" class="posts-list">
-                <!-- Sample Post 1 -->
-                <div class="post-item">
-                    <input type="checkbox" class="post-checkbox">
-                    <div class="post-content">
-                        <h3>Movie Title</h3>
-                        <p>Username</p>
-                        <p>Post text goes here. This is a sample description for the post.</p>
-                    </div>
-                </div>
-                <!-- Sample Post 2 -->
-                <div class="post-item">
-                    <input type="checkbox" class="post-checkbox">
-                    <div class="post-content">
-                        <h3>Movie Title</h3>
-                        <p>Username</p>
-                        <p>Post text goes here. This is a sample description for the post.</p>
-                    </div>
-                </div>
+                <?php
+                // Get the current user's username and admin status
+                $currentUsername = $_SESSION['username']; // Assuming username is stored in the session
+                $isAdminQuery = "SELECT IsAdmin FROM Profile WHERE Username = ?";
+                $stmt = $DBConnect->prepare($isAdminQuery);
+                $stmt->bind_param("s", $currentUsername);
+                $stmt->execute();
+                $isAdminResult = $stmt->get_result();
+                $isAdmin = $isAdminResult->fetch_assoc()['IsAdmin'];
+
+                // Debugging: Check if the user is identified as an admin or not
+                // echo 'Is Admin: ' . $isAdmin;
+
+                // Fetch posts based on admin status
+                if ($isAdmin) {
+                    // Admin: fetch all posts, sorted by FlagCounter in descending order
+                    $query = "
+                        SELECT Post.PostID, Post.MovieName, Post.PostHeading, Post.Content, Post.FlagCounter, Profile.Username
+                        FROM Post
+                        INNER JOIN Profile ON Post.Username = Profile.Username
+                        ORDER BY Post.FlagCounter DESC, Post.PostID DESC
+                    ";
+                } else {
+                    // Non-admin: fetch only the posts created by the current user, sorted by FlagCounter
+                    $query = "
+                        SELECT Post.PostID, Post.MovieName, Post.PostHeading, Post.Content, Post.FlagCounter, Profile.Username
+                        FROM Post
+                        INNER JOIN Profile ON Post.Username = Profile.Username
+                        WHERE Post.Username = ?
+                        ORDER BY Post.FlagCounter DESC, Post.PostID DESC
+                    ";
+                }
+
+                // Prepare and execute the query
+                $stmt = $DBConnect->prepare($query);
+                if (!$isAdmin) {
+                    $stmt->bind_param("s", $currentUsername);
+                }
+                $stmt->execute();
+                $result = $stmt->get_result();
+
+                // Check if result is being returned properly
+                // Debugging: Check the result
+                // echo 'Number of posts: ' . $result->num_rows;
+
+                // Display posts
+                if ($result && $result->num_rows > 0) {
+                    while ($row = $result->fetch_assoc()) {
+                        echo '<div class="post-item">';
+                        echo '<input type="checkbox" class="post-checkbox" data-post-id="' . htmlspecialchars($row['PostID']) . '">';
+                        echo '<div class="post-content">';
+                        echo '<h3>' . htmlspecialchars($row['PostHeading']) . '</h3>';
+                        echo '<p>By: ' . htmlspecialchars($row['Username']) . '</p>';
+                        echo '<p>' . htmlspecialchars($row['Content']) . '</p>';
+                        echo '<p><strong>Flags:</strong> ' . htmlspecialchars($row['FlagCounter']) . '</p>';
+                        echo '</div>';
+                        echo '</div>';
+                    }
+                } else {
+                    echo '<p>No posts available.</p>';
+                }
+                ?>
+            </div>
         </div>
     </div>
-    <div id="under-nav">
 
-        <!-- <div id="lower">lower</div> -->
-    </div>
     <script src="js/all-posts.js"></script>
-
 </body>
 </html>
